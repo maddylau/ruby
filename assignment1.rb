@@ -1,6 +1,6 @@
 # 1
 def onlyInAmerica(string)
-	string.to_s + ", only in America!"
+	string + ", only in America!"
 end
 
 puts onlyInAmerica("Golden bricks")
@@ -9,22 +9,39 @@ puts onlyInAmerica("Golden bricks")
 a = [100,10,-1000]
 
 
-for i in a
-	if i == 100
-	puts "100"
+max = a.first
+
+a.each do |i|
+	if i > max
+		max = i
 	end
 end
 
+puts max
+
+
 #3
 
-def createHash(brands, models)
-	ab = Array.new(1, Hash.new)
-	ab[0][brands[0]] = models[0]
-	ab[0][brands[1]] = models[1]
-	puts ab
-end
+# def createHash(brands, models)
+# 	ab = Array.new(1, Hash.new)
+# 	ab[0][brands[0]] = models[0]
+# 	ab[0][brands[1]] = models[1]
+# 	puts ab
+# end
 
-createHash([:toyota, :tesla],["prius", "model s"])
+# createHash([:toyota, :tesla],["prius", "model s"])
+
+brands = ["Toyota", "Tesla"]
+models = ["Prius", "Model S"]
+
+models.map { 
+	|i| i.include?(',') ? i.split(/, /) : i
+}
+
+Hash[brands.zip(models.map {
+	|i| i.include?(',') ? i.split(/, /) : i 
+	}
+)]
 
 
 #4
